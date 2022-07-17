@@ -1,0 +1,24 @@
+sample_rate: 16000
+
+# For MIDI augmentation
+min_tempo: 50
+max_tempo: 150
+expressive_timing_range_ms: 50
+expressive_timing_mean_ms: 0
+expressive_timing_std_ms: 15
+
+# For synthesis parameter augmentation
+min_pitch_correction: 0
+max_pitch_correction: 1
+
+# For mixing
+mix_normalization_factor: -13.0
+mix_target_peak: -1.0
+
+# For note expression augmentation (unused)
+
+vibrato_range: [0.0, 1.0]
+volume_range: [0.25, 1.0]
+volume_fluctuation_range: [0.0, 1.0]
+volume_peak_position_range: [0.0, 1.0]
+attack_level_range: [0.0, 0.8]

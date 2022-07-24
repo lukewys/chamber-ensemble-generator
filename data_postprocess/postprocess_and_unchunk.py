@@ -151,7 +151,7 @@ if __name__ == '__main__':
                     for piece in piece_list_to_remove:
                         shutil.move(os.path.join(os.path.join(synthesis_parameters_output_dir, split),
                                                  os.path.basename(piece) + '.pickle'), zip_tmp_dir)
-                    os.system(f'tar cf {chunk_file_name} --use-compress-prog=pbzip2 -C {zip_tmp_dir}/*')
+                    os.system(f'tar cf {chunk_file_name} --use-compress-prog=pbzip2 -C {zip_tmp_dir}/ .')
                     os.system(f'mv {chunk_file_name} '
                               f'{final_output_dir}/synthesis_parameters/{split}/')
                     os.system(f'rm -rf {zip_tmp_dir}/*')

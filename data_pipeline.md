@@ -32,7 +32,7 @@ Other utilities include:
 
 To generate CocoChorales, you could start with the MIDI files generated from
 an [open-source implementation of Coconet](https://github.com/lukewys/coconet-pytorch). You could directly download the
-MIDIs from [here](), or you could generate your own Bach Chorales.
+MIDIs from [here](https://drive.google.com/file/d/1DH4DCsiqpqvwwD5WnFtF-kv7IPAxMLr4/view?usp=sharing), or you could generate your own Bach Chorales.
 
 After the MIDI files are obtained, go to the root directory of this repo and run the following scripts to generate
 CocoChorales: (same script can be found in [./create_cocochorales.sh](./create_cocochorales.sh))
@@ -80,7 +80,7 @@ In generating CocoChorales, we actually split MIDI files into chunks and generat
 creation script in parallel. We use a compute cluster to generate CocoChorales where each script is a job to generate
 one chunk. After each chunk is generated, we
 use [data_postprocess/postprocess_and_unchunk.py](data_postprocess/postprocess_and_unchunk_cocochorales.py) to post process the
-output.
+output. [Here](https://drive.google.com/file/d/1yhCJgrY1rP01hYqif_lgITSophB3eRaW/view?usp=sharing) you can find the chunked MIDI files.
 
 For each job (chunk), we use 16GB of RAM and 4 cores of CPU. We recommend using CPU for dataset generation as most of
 the compute is the autoregressive RNN in MIDI-DDSP to generate pitch curve. We use 256 jobs (chunks) and the total

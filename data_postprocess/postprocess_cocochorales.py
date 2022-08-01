@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from utils.file_utils import json_load
 from utils.instrument_utils import AVAILABLE_ENSEMBLES
-from .postprocess_utils import copy_and_separate_midi, move_wavs, split_metadata, save_other_data
+from data_postprocess.postprocess_utils import copy_and_separate_midi, move_wavs, split_metadata, save_other_data
 
 NUM_TRACK_DIGITS = 6
 

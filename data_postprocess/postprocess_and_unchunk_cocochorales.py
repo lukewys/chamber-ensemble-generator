@@ -8,13 +8,12 @@ import glob
 import shutil
 import argparse
 from tqdm import tqdm
-import pretty_midi
 import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from utils.file_utils import json_load
 from utils.instrument_utils import AVAILABLE_ENSEMBLES
-from data_postprocess.postprocess import copy_and_separate_midi, move_wavs, split_metadata, save_other_data
+from .postprocess_utils import copy_and_separate_midi, move_wavs, split_metadata, save_other_data
 
 NUM_TRACK_DIGITS = 6
 
@@ -51,6 +50,7 @@ if __name__ == '__main__':
     metadata_dir = os.path.join(postprocess_output_dir, 'metadata')
     note_expression_output_dir = os.path.join(postprocess_output_dir, 'note_expression')
     synthesis_parameters_output_dir = os.path.join(postprocess_output_dir, 'synthesis_parameters')
+    f0_output_dir = os.path.join(postprocess_output_dir, 'f0')
     os.makedirs(main_dataset_dir, exist_ok=True)
 
     # create directory
@@ -58,12 +58,13 @@ if __name__ == '__main__':
         os.makedirs(os.path.join(metadata_dir, split), exist_ok=True)
         os.makedirs(os.path.join(note_expression_output_dir, split), exist_ok=True)
         os.makedirs(os.path.join(synthesis_parameters_output_dir, split), exist_ok=True)
+        os.makedirs(os.path.join(f0_output_dir, split), exist_ok=True)
 
-    for split in splits:
         os.makedirs(os.path.join(os.path.join(final_output_dir, 'main_dataset'), split), exist_ok=True)
         os.makedirs(os.path.join(os.path.join(final_output_dir, 'metadata'), split), exist_ok=True)
         os.makedirs(os.path.join(os.path.join(final_output_dir, 'note_expression'), split), exist_ok=True)
         os.makedirs(os.path.join(os.path.join(final_output_dir, 'synthesis_parameters'), split), exist_ok=True)
+        os.makedirs(os.path.join(os.path.join(final_output_dir, 'f0'), split), exist_ok=True)
 
     os.makedirs(args.zip_extract_dir, exist_ok=True)
 
@@ -105,7 +106,8 @@ if __name__ == '__main__':
                                     piece_save_dir,
                                     metadata_dir,
                                     note_expression_output_dir,
-                                    synthesis_parameters_output_dir)
+                                    synthesis_parameters_output_dir,
+                                    f0_output_dir)
 
                     split_idx[split] += 1
 
@@ -154,6 +156,15 @@ if __name__ == '__main__':
                     os.system(f'tar cf {chunk_file_name} --use-compress-prog=pbzip2 -C {zip_tmp_dir}/ .')
                     os.system(f'mv {chunk_file_name} '
                               f'{final_output_dir}/synthesis_parameters/{split}/')
+                    os.system(f'rm -rf {zip_tmp_dir}/*')
+
+                    # f0
+                    for piece in piece_list_to_remove:
+                        shutil.move(os.path.join(f0_output_dir, split, os.path.basename(piece) + '.pickle'),
+                                    zip_tmp_dir)
+                    os.system(f'tar cf {chunk_file_name} --use-compress-prog=pbzip2 -C {zip_tmp_dir}/ .')
+                    os.system(f'mv {chunk_file_name} '
+                              f'{final_output_dir}/f0/{split}/')
                     os.system(f'rm -rf {zip_tmp_dir}/*')
 
                     zip_idx[split] += 1

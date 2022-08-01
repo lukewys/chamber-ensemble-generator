@@ -68,7 +68,7 @@ for ensemble_name in string brass woodwind random; do
 done
 
 # Step 4: Post Process
-python data_postprocess/postprocess.py \
+python data_postprocess/postprocess_cocochorales.py \
   --midi_dir ./cocochorales_midi \
   --synthesis_dir ./synthesized_midi \
   --output_dir ./cocochorales_full
@@ -79,7 +79,7 @@ python data_postprocess/postprocess.py \
 In generating CocoChorales, we actually split MIDI files into chunks and generate CocoChorales by running dataset
 creation script in parallel. We use a compute cluster to generate CocoChorales where each script is a job to generate
 one chunk. After each chunk is generated, we
-use [data_postprocess/postprocess_and_unchunk.py](data_postprocess/postprocess_and_unchunk.py) to post process the
+use [data_postprocess/postprocess_and_unchunk.py](data_postprocess/postprocess_and_unchunk_cocochorales.py) to post process the
 output.
 
 For each job (chunk), we use 16GB of RAM and 4 cores of CPU. We recommend using CPU for dataset generation as most of

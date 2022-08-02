@@ -28,7 +28,8 @@ if __name__ == '__main__':
             os.makedirs(os.path.join(output_dir, folder, split), exist_ok=True)
 
             # get all the tars
-            tars_all = glob.glob(os.path.join(cocochorales_full_dir, folder, split, '*.tar.bz2'))
+            tars_all = sorted(glob.glob(os.path.join(cocochorales_full_dir, folder, split, '*.tar.bz2')),
+                              key=lambda x: int(os.path.basename(x).split('.')[0]))
             tars_to_copy = tars_all[::(len(tars_all) // num_tars[split])]  # take every tar in equidistant intervals.
             for tar in tars_to_copy:
                 shutil.copy(tar, os.path.join(output_dir, folder, split))

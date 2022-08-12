@@ -49,6 +49,7 @@ def copy_and_separate_midi(midi_file, save_dir):
         instrument_name = MIDI_PROGRAM_TO_INST_NAME_DICT[inst.program]
         stem_midi.write(os.path.join(stem_midi_save_dir, f'{i + 1}_{instrument_name}.mid'))  # 1-indexed
 
+
 def get_f0(synthesis_parameters):
     """Get the f0 from the synthesis parameters."""
     return {key: synthesis_parameters[key]['f0_hz'] for key in synthesis_parameters}
@@ -127,17 +128,18 @@ def split_metadata(midi_path, piece_dir, ensemble):
     metadata['midi_program_number'] = midi_program_number
 
     # Rearrange keys in metadata for readability.
-    metadata_rearrange = {key: metadata[key] for key in ['midi_file',
-                                                         'tempo',
-                                                         'ensemble',
-                                                         'instrument_name',
-                                                         'midi_program_number',
-                                                         'normalization_factor',
-                                                         'target_peak',
-                                                         'normalized',
-                                                         'overall_gain',
-                                                         'stem_integrated_loudness',
-                                                         'pitch_correction_amount']}
+    key_sorted = [k for k in ['midi_file',
+                              'tempo',
+                              'ensemble',
+                              'instrument_name',
+                              'midi_program_number',
+                              'normalization_factor',
+                              'target_peak',
+                              'normalized',
+                              'overall_gain',
+                              'stem_integrated_loudness',
+                              'pitch_correction_amount'] if k in metadata.keys()]
+    metadata_rearrange = {key: metadata[key] for key in key_sorted}
 
     # add additional metadata not in the sorted list
     metadata_rearrange.update(metadata)

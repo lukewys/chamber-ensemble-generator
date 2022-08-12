@@ -76,14 +76,14 @@ if __name__ == '__main__':
     for ensemble in AVAILABLE_ENSEMBLES:
         split_json = json_load(os.path.join(midi_dir, 'split', f'{ensemble}_split.json'))
         ensemble_zip_dir = os.path.join(args.zip_dir, ensemble)
-        all_zip_files = glob.glob(ensemble_zip_dir + '/*.zip')
+        all_zip_files = sorted(glob.glob(ensemble_zip_dir + '/*.zip'))
         for zip_file in all_zip_files:
             zip_save_path = os.path.join(args.zip_extract_dir, os.path.basename(zip_file))
 
             os.system(f'cp "{zip_file}" "{zip_save_path}"')
             os.system(f'unzip -q {zip_save_path} -d {args.zip_extract_dir}')
 
-            piece_list = glob.glob(args.zip_extract_dir + '/*')
+            piece_list = sorted(glob.glob(args.zip_extract_dir + '/*'))
             piece_list_splited = split_piece_list(piece_list, split_json)
             for split, piece_list in piece_list_splited.items():
                 for piece_dir in tqdm(piece_list):

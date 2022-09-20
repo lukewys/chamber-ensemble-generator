@@ -125,10 +125,11 @@ if __name__ == '__main__':
                     os.makedirs(zip_tmp_dir, exist_ok=True)
                     piece_list_to_remove = piece_list[:NUM_PIECES_IN_ZIP]
 
+                    chunk_file_name = f'{args.zip_extract_dir}/{zip_idx[split]}.tar.bz2'
+
                     # main dataset
                     for piece in piece_list_to_remove:
                         shutil.move(piece, zip_tmp_dir)
-                    chunk_file_name = f'{args.zip_extract_dir}/{zip_idx[split]}.tar.bz2'
                     os.system(f'tar cf {chunk_file_name} --use-compress-prog=pbzip2 -C {zip_tmp_dir}/ .')
                     os.system(f'mv {chunk_file_name} {final_output_dir}/main_dataset/{split}/')
                     os.system(f'rm -rf {zip_tmp_dir}/*')

@@ -1,4 +1,4 @@
-"""Create the tiny version of CocoChorales."""
+"""Create the tiny, small version of CocoChorales."""
 
 import os
 import shutil
@@ -11,14 +11,24 @@ if __name__ == '__main__':
                         help='the directory containing the full CocoChorales dataset.')
     parser.add_argument('--output_dir', type=str, default=None, metavar='N',
                         help='the directory for outputting the tiny version of CocoChorales.')
+    parser.add_argument('--subset', type=str, default='ting', metavar='N',
+                        help='the subset size of the Cocochorales dataset (tiny, small).')
     args = parser.parse_args()
     cocochorales_full_dir = args.cocochorales_full_dir
     output_dir = args.output_dir
 
-    num_tars = {'train': 12,  # 12*2000 per tar = 24000 pieces.
-                'valid': 4,  # 4*2000 per tar = 8000 pieces.
-                'test': 4  # 4*2000 per tar = 8000 pieces.
-                }
+    if args.subset == 'tiny':
+        num_tars = {'train': 12,  # 12*2000 per tar = 24000 pieces.
+                    'valid': 4,  # 4*2000 per tar = 8000 pieces.
+                    'test': 4  # 4*2000 per tar = 8000 pieces.
+                    }
+    elif args.subset == 'small':
+        num_tars = {'train': 48,  # 48*2000 per tar = 96000 pieces.
+                    'valid': 8,  # 8*2000 per tar = 16000 pieces.
+                    'test': 8  # 8*2000 per tar = 16000 pieces.
+                    }
+    else:
+        raise ValueError('Unknown subset size.')
 
     splits = ['train', 'valid', 'test']
     folders = ['main_dataset', 'metadata', 'note_expression', 'synthesis_parameters', 'f0']

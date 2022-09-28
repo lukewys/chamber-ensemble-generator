@@ -24,11 +24,31 @@ Please check [data_pipeline.md](data_pipeline.md) for detials of Chamber Ensembl
 
 Please check [data_format.md](data_format.md) for the format of the CocoChorlaes dataset.
 
-
-
 ## Dataset Download
 
-Comming soon!
+Simply run [data_download/download_cocochorales_full.sh](data_download/download_cocochorales_full.sh) to download the full CocoChorales dataset consists of 240k samples.
 
+The script will download all the data types in the CocoChorales dataset to the `cocochorales_full_v1_zipped` folder it creates under current directory. 
+Please see [data_format.md](data_format.md) for details of each type.
+
+You could comment the lines of the data download you don't want to download.
+The size of 5 types of data in CocoChorales:
+ - main_dataset: 569G.
+ - note_expression: 1.3G.
+ - synthesis_parameters: 2.3T.
+ - f0: 6.1G.
+ - metadata: 279M.
+ - total: 2.9T.
+
+You could run [data_download/download_cocochorales_tiny.sh](data_download/download_cocochorales_tiny.sh) to download a tiny version of CocoChorales dataset. 
+The script will download all the data types in the CocoChorales tiny dataset to the `cocochorales_tiny_v1_zipped` folder it creates under current directory
+The tiny version contains 24k training samples, 8k validation samples and 8k test samples.
+
+
+## Dataset Extraction
+You could run [data_download/extract_tars.py](data_download/extract_tars.py) to extract the downloaded tar files.
+```
+python data_download/extract_tars.py --data_dir <dir_to_cocochorales_full_v1_zipped> --output_dir <dir_to_cocochorales_full>
+```
 
 

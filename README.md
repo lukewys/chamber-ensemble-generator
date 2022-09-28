@@ -1,4 +1,4 @@
-# Chamber Ensemble Geneartor and CocoChorales Dataset
+# Chamber Ensemble Generator and CocoChorales Dataset
 
 
 

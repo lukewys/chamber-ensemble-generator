@@ -31,7 +31,7 @@ Simply run [data_download/download_cocochorales_full.sh](data_download/download_
 The script will download all the data types in the CocoChorales dataset to the `cocochorales_full_v1_zipped` folder it creates under current directory. 
 Please see [data_format.md](data_format.md) for details of each type. You could comment the lines of the data download you don't want to download.
 
-Below are the size of 5 types of data in CocoChorales:
+Below are the size of 5 types of data in CocoChorales full dataset:
  - main_dataset: 569G.
  - note_expression: 1.3G.
  - synthesis_parameters: 2.3T.

@@ -52,8 +52,13 @@ python data_download/extract_tars.py --data_dir <dir_to_cocochorales_full_v1_zip
 ```
 
 ## Citation
-If you use CocoChorales dataset in your research, please cite our paper:
+If you use CocoChorales dataset in your research, please consider cite our paper:
 ```
-[TODO]
+@article{wu2022chamber,
+  title = {The Chamber Ensemble Generator: Limitless High-Quality MIR Data via Generative Modeling},
+  author = {Wu, Yusong and Gardner, Josh and Manilow, Ethan and Simon, Ian and Hawthorne, Curtis and Engel, Jesse},
+  journal={arXiv preprint arXiv:2209.14458},
+  year = {2022},
+}
 ```
 

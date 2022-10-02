@@ -1,6 +1,6 @@
 # Chamber Ensemble Generator and CocoChorales Dataset
 
-
+[Blog](https://magenta-staging.tensorflow.org/ceg-and-cocochorales) | [Paper](http://arxiv.org/abs/2209.14458) | [Dataset Page](https://magenta.tensorflow.org/datasets/cocochorales) | [Sample Website](https://lukewys.github.io/cocochorales/) | [Paper With Code](https://paperswithcode.com/dataset/cocochorales)
 
 Chamber Ensemble Generator is a music dataset generation pipeline consist of Coconet and MIDI-DDSP. Chamber Ensemble Generator can generates 4-part Bach Chorales performance audio with aligned notes, note expressions, synthesis parameters (f0, amplitudes, etc) and stems while enabling rich variations in generative process.
 

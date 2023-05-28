@@ -47,6 +47,9 @@ Here is [md5](https://storage.googleapis.com/magentadata/datasets/cocochorales/c
 
 ## Dataset Extraction
 You could run [data_download/extract_tars.py](data_download/extract_tars.py) to extract the downloaded tar files.
+
+The code uses `tar` command in command line to extract the tar files and uses `pbzip2` compressor. If you do not have `pbzip2`, here is how to install that on [macOS](https://formulae.brew.sh/formula/pbzip2) or [Linux](https://howtoinstall.co/en/pbzip2). If you are using Windows, you might consider use other software to extract the tar files and put the extracted files to the correct directory.
+
 ```
 python data_download/extract_tars.py --data_dir <dir_to_cocochorales_full_v1_zipped> --output_dir <dir_to_cocochorales_full>
 ```

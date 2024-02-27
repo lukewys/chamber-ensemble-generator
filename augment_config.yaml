@@ -5,7 +5,7 @@ min_tempo: 50
 max_tempo: 150
 expressive_timing_range_ms: 50
 expressive_timing_mean_ms: 0
-expressive_timing_std_ms: 15
+expressive_timing_std_ms: 50
 
 # For synthesis parameter augmentation
 min_pitch_correction: 0

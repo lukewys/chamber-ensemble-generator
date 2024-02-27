@@ -3,3 +3,6 @@
 /data_process/
 /workflow.txt
 /.idea
+/wandb
+/logs
+**/__pycache__
